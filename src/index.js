@@ -1,9 +1,9 @@
 const express = require("express");
 const bodyParse = require("body-parser");
 const cron = require("node-cron");
+const population = require("./controlles/population.js");
 
 const app = express();
-const request = require("request");
 
 app.use(bodyParse.json());
 app.use(bodyParse.urlencoded({ extended: false }));
@@ -19,10 +19,11 @@ app.get("/", async (req, res) => {
 
 require("./controlles/authControlles")(app);
 
-function SendMailDaily() {
-  console.log("Teste Cron");
+async function SendMailDaily() {
+  await population();
 }
+
 app.listen(process.env.PORT || 3000, () => {
-  console.log("Server is running at https://localhost:3000");
+  console.log("Server is running at :3000");
 });
-cron.schedule("10 11 * * *", SendMailDaily);
+cron.schedule("55 19 * *", SendMailDaily);
