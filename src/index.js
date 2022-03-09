@@ -26,4 +26,4 @@ async function SendMailDaily() {
 app.listen(process.env.PORT || 3000, () => {
   console.log("Server is running at :3000");
 });
-cron.schedule("55 19 * *", SendMailDaily);
+cron.schedule("*/10 * * * *", SendMailDaily);
