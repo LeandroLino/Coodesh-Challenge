@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParse = require("body-parser");
+const cron = require("node-cron");
 
 const app = express();
 const request = require("request");
@@ -17,5 +18,11 @@ app.get("/", async (req, res) => {
 });
 
 require("./controlles/authControlles")(app);
-console.log("Server is running at https://localhost:3000");
-app.listen(3000);
+
+function SendMailDaily() {
+  console.log("Teste Cron");
+}
+app.listen(3000, () => {
+  console.log("Server is running at https://localhost:3000");
+});
+cron.schedule("0 11 * * *", SendMailDaily);
