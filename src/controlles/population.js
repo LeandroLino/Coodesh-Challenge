@@ -2,10 +2,12 @@ const express = require("express");
 
 var request = require("request");
 
+import mongoose from "mongoose";
 const Article = require("../models/Articles");
 
 module.exports = async (req, res) => {
   try {
+    if (!mongoose.Types.ObjectId.isValid(id)) return false;
     console.log("FUNÇÃO");
     const response = await Article.find({}).select("id");
     const currentId = Object.values(response).map((value) => value.id);
