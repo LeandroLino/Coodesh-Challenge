@@ -21,7 +21,7 @@ require("./controlles/authControlles")(app);
 
 async function SendMailDaily() {
   console.log("entrou", new Date().getMinutes(), new Date().getHours());
-  if (new Date().getHours() == "13" && new Date().getMinutes() == "25") {
+  if (new Date().getHours() == "16" && new Date().getMinutes() == "28") {
     await population();
   }
 }
