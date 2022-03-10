@@ -20,7 +20,8 @@ app.get("/", async (req, res) => {
 require("./controlles/authControlles")(app);
 
 async function SendMailDaily() {
-  if (new Date().getHours() == "13") {
+  console.log("entrou", new Date().getMinutes(), new Date().getHours());
+  if (new Date().getHours() == "13" && new Date().getMinutes() == "25") {
     await population();
   }
 }
@@ -28,4 +29,4 @@ async function SendMailDaily() {
 app.listen(process.env.PORT || 3000, () => {
   console.log("Server is running at :3000");
 });
-cron.schedule("*/10 * * * *", SendMailDaily);
+cron.schedule("* * * * *", SendMailDaily);
