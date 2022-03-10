@@ -20,8 +20,8 @@ app.get("/", async (req, res) => {
 require("./controlles/authControlles")(app);
 
 async function SendMailDaily() {
-  console.log("entrou", new Date().getMinutes(), new Date().getHours());
-  if (new Date().getHours() == "17" && new Date().getMinutes() == "0") {
+  console.log("entrou", new Date().getHours());
+  if (new Date().getHours() == "19" && new Date().getMinutes() == "0") {
     await population();
   }
 }
