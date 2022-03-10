@@ -20,10 +20,11 @@ app.get("/", async (req, res) => {
 require("./controlles/authControlles")(app);
 
 async function SendMailDaily() {
+  console.log("ENTROU");
   await population();
 }
 
 app.listen(process.env.PORT || 3000, () => {
   console.log("Server is running at :3000");
 });
-cron.schedule("40 9 * * *", SendMailDaily);
+cron.schedule("50 9 * * *", SendMailDaily);
